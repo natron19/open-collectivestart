@@ -1,0 +1,42 @@
+<div class="text-center py-5">
+  <h1 class="display-5 fw-bold mb-3"><%= ENV.fetch("APP_TAGLINE", "CollectiveStart Demo") %></h1>
+  <p class="lead text-muted mb-4 mx-auto" style="max-width: 620px;">
+    Describe your working community in one form and get a Founding Starter Pack: a synthesis
+    of your founding conversation, a cooperative business model canvas, and a legal form
+    comparison — all drafted for lawyer review, never filing-ready.
+  </p>
+  <div class="mt-4">
+    <% if signed_in? %>
+      <%= link_to "Go to dashboard", dashboard_path, class: "btn btn-primary btn-lg" %>
+    <% else %>
+      <%= link_to "Sign up", sign_up_path, class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row g-4 mt-2">
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Founding Conversation Summary</h5>
+        <p class="card-text text-muted">A synthesis of the team's founding conversation: values, governance, capital, and member commitments.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Cooperative Business Model Canvas</h5>
+        <p class="card-text text-muted">Nine adapted canvas sections built for a member-owned firm, not a VC-backed startup.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Legal Form Comparison</h5>
+        <p class="card-text text-muted">A trade-off comparison of the three legal forms most plausible for the team's jurisdiction and goals.</p>
+      </div>
+    </div>
+  </div>
+</div>

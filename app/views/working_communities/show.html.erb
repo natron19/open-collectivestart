@@ -1,0 +1,54 @@
+<div data-controller="pack-generator">
+
+  <div class="alert alert-warning lawyer-review-banner" role="alert">
+    <strong>For lawyer review.</strong> Every artifact below is a working draft, never a filing-ready document. CollectiveStart helps you think; it does not give legal advice.
+  </div>
+
+  <div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+      <h1 class="mb-2"><%= @community.name %></h1>
+      <div class="d-flex gap-2 flex-wrap">
+        <span class="badge bg-secondary"><%= @community.jurisdiction %></span>
+        <span class="badge bg-secondary"><%= @community.founding_team_size %> founders</span>
+        <span class="badge bg-secondary"><%= @community.legal_form_preference.humanize %></span>
+      </div>
+    </div>
+    <div class="d-flex gap-2 flex-wrap justify-content-end">
+      <%= link_to "Edit", edit_working_community_path(@community), class: "btn btn-outline-secondary btn-sm" %>
+      <%= button_to "Delete", @community, method: :delete,
+            class: "btn btn-outline-danger btn-sm",
+            data: { turbo_confirm: "Delete this community and its starter pack?" } %>
+      <%= button_to @community.founding_starter_pack ? "Regenerate Starter Pack" : "Generate Starter Pack",
+            working_community_founding_starter_pack_path(@community),
+            method: :post,
+            class: "btn btn-primary btn-sm",
+            data: { turbo_stream: true } %>
+    </div>
+  </div>
+
+  <%# Loading state — lives outside #starter-pack-section so it survives Turbo Stream updates %>
+  <div data-pack-generator-target="loading" class="d-none">
+    <div class="card border-secondary">
+      <div class="card-body text-center py-5">
+        <div class="spinner-border text-secondary mb-3" style="width: 3rem; height: 3rem;" role="status">
+          <span class="visually-hidden">Generating&hellip;</span>
+        </div>
+        <p class="text-secondary mb-1">Generating your Founding Starter Pack&hellip;</p>
+        <p class="text-secondary small mb-4">This usually takes 20&ndash;40 seconds.</p>
+        <button type="button" class="btn btn-outline-secondary btn-sm"
+                data-action="click->pack-generator#cancel">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="starter-pack-section" data-pack-generator-target="section">
+    <% if @community.founding_starter_pack %>
+      <%= render "starter_pack", community: @community, pack: @community.founding_starter_pack %>
+    <% else %>
+      <%= render "empty_pack_state", community: @community %>
+    <% end %>
+  </div>
+
+</div>

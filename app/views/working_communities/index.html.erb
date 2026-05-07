@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>My Working Communities</h1>
+  <%= link_to "New Working Community", new_working_community_path, class: "btn btn-primary" %>
+</div>
+
+<%= render "communities_list", communities: @communities %>

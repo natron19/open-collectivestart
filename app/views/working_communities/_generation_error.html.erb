@@ -1,0 +1,20 @@
+<div class="alert alert-danger">
+  <h5 class="alert-heading">Something went wrong</h5>
+  <% case error_type %>
+  <% when :budget_exceeded %>
+    <p class="mb-0">You've reached your daily AI request limit. Come back tomorrow!</p>
+  <% when :gatekeeper_blocked %>
+    <p class="mb-0">Your input couldn't be processed. Please revise it and try again.</p>
+  <% when :timeout %>
+    <p class="mb-0">The AI took too long to respond. Please try again.</p>
+  <% else %>
+    <p class="mb-0">An unexpected error occurred. Please try again.</p>
+  <% end %>
+</div>
+<div class="mt-3">
+  <%= button_to "Try again",
+        working_community_founding_starter_pack_path(community),
+        method: :post,
+        class: "btn btn-outline-secondary",
+        data: { turbo_stream: true } %>
+</div>

@@ -1,0 +1,15 @@
+Working community details:
+
+Proposed name: {{community_name}}
+Jurisdiction: {{jurisdiction}}
+Founding team size: {{founding_team_size}}
+Stated legal form preference: {{legal_form_preference}}
+
+Purpose:
+{{purpose}}
+
+Intended business model:
+{{business_model}}
+
+Produce the Founding Starter Pack now, following the exact structure and
+delimiters specified in the system instructions.

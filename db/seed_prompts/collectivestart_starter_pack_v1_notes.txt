@@ -1,0 +1,22 @@
+This template enforces the three-artifact contract structurally through
+delimiter requirements rather than schema constraints. The DRAFT FOR
+LAWYER REVIEW banner is mandatory and is the single most important
+safety feature of this app; do not remove it during prompt iteration.
+
+Known failure modes to watch for:
+- Gemini occasionally drops the fourth delimiter (=== OPEN QUESTIONS ===)
+  and writes the questions inline at the end of artifact 3. The parser
+  surfaces this as a missing open_questions field with a non-empty
+  legal_form_comparison containing question marks.
+- For "unsure" legal form preferences, Gemini sometimes picks the same
+  three forms regardless of inputs. If iterating, add specific guidance
+  to the system prompt about how jurisdiction and business model should
+  influence the choice.
+- Temperature above 0.6 produces creative section headings that break
+  the parser. Stay at or below 0.4 unless the parser is also relaxed.
+
+When iterating in the admin template editor, test with at least three
+sample variable sets:
+1. A small worker co-op (4 founders, US state, services business)
+2. A multi-stakeholder co-op (12 founders, country, food retail)
+3. An "unsure" team (6 founders, no jurisdiction, software services)

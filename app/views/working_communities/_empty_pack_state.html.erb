@@ -1,0 +1,14 @@
+<div class="card text-center py-5">
+  <div class="card-body">
+    <h5 class="card-title">No starter pack yet</h5>
+    <p class="text-muted mb-4">
+      Generate your Founding Starter Pack to get a founding conversation summary,
+      a cooperative business model canvas, and a legal form comparison.
+    </p>
+    <%= button_to "Generate Starter Pack",
+          working_community_founding_starter_pack_path(community),
+          method: :post,
+          class: "btn btn-primary",
+          data: { turbo_stream: true } %>
+  </div>
+</div>

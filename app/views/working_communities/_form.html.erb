@@ -1,0 +1,73 @@
+<%= form_with model: community do |f| %>
+  <% if community.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+        <% community.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control #{"is-invalid" if community.errors[:name].any?}" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :purpose, class: "form-label" %>
+    <div data-controller="character-counter">
+      <%= f.text_area :purpose, rows: 5,
+            class: "form-control #{"is-invalid" if community.errors[:purpose].any?}",
+            data: { character_counter_target: "field", action: "input->character-counter#update" } %>
+      <div class="character-counter text-muted small text-end mt-1">
+        <span data-character-counter-target="count">0</span> / 1500
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :jurisdiction, class: "form-label" %>
+    <%= f.text_field :jurisdiction,
+          class: "form-control #{"is-invalid" if community.errors[:jurisdiction].any?}",
+          placeholder: "e.g. Massachusetts, France, or 'unsure'" %>
+    <div class="form-text">US state name, country name, or "unsure" if undecided.</div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :founding_team_size, class: "form-label" %>
+    <%= f.number_field :founding_team_size, min: 2, max: 50,
+          class: "form-control #{"is-invalid" if community.errors[:founding_team_size].any?}" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :business_model, class: "form-label" %>
+    <div data-controller="character-counter">
+      <%= f.text_area :business_model, rows: 5,
+            class: "form-control #{"is-invalid" if community.errors[:business_model].any?}",
+            data: { character_counter_target: "field", action: "input->character-counter#update" } %>
+      <div class="character-counter text-muted small text-end mt-1">
+        <span data-character-counter-target="count">0</span> / 1500
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :legal_form_preference, class: "form-label" %>
+    <%= f.select :legal_form_preference,
+          [
+            ["Worker Cooperative",           "worker_coop"],
+            ["Multi-Stakeholder Cooperative", "multi_stakeholder_coop"],
+            ["Employee-Owned LLC",           "employee_owned_llc"],
+            ["Benefit Corporation",          "benefit_corporation"],
+            ["Unsure — help me decide",      "unsure"]
+          ],
+          { include_blank: "Select a legal form..." },
+          class: "form-select #{"is-invalid" if community.errors[:legal_form_preference].any?}" %>
+  </div>
+
+  <div class="d-flex gap-2">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", working_communities_path, class: "btn btn-link" %>
+  </div>
+<% end %>
