@@ -1,0 +1,20 @@
+# Per-app guardrail configuration, read by AiGuardConfig.
+# See docs/ai-guardrails.md (Layer 1b: AiOutputGuard) and docs/ai-evals.md.
+
+# Co-op formation planning; personal distress is out of scope.
+crisis_terms: []
+
+# Output structure rules per AiTemplate name. Templates not listed get the
+# generic output checks only (non-empty, no prompt leak, no profanity, no new PII).
+#   format:        text | json
+#   required_keys: top-level keys the JSON object must contain
+templates:
+  health_ping:
+    format: text
+  demo_placeholder_v1:
+    format: text
+  # Delimited text, not JSON: FoundingStarterPackParser splits on the
+  # === ARTIFACT 1/2/3 === and === OPEN QUESTIONS === anchors, and the
+  # controller rejects a response missing any section.
+  collectivestart_starter_pack_v1:
+    format: text
