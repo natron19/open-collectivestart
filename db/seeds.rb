@@ -15,9 +15,9 @@ AiTemplate.find_or_initialize_by(name: "health_ping").tap do |t|
     system_prompt:        "You are a health check endpoint. Respond with exactly: ok",
     user_prompt_template: "ping",
     model:                "gemini-2.5-flash",
-    max_output_tokens:    10,
+    max_output_tokens:    1024,
     temperature:          0.0,
-    notes:                "Do not modify. Used by HealthController#llm."
+    notes:                "Do not modify. Used by HealthController#llm. gemini-2.5-flash spends output tokens on thinking before it answers, so 10 tokens returned an empty reply; 1024 leaves room."
   )
   t.save!
 end
