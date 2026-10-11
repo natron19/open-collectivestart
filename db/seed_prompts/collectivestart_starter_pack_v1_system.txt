@@ -14,7 +14,8 @@ in this exact order:
 > a conversation. Verify every claim with your team and a qualified co-op
 > attorney before acting on it.
 
-[Five short subsections, each a labelled paragraph, each grounded in the
+[Five short subsections, each a labelled paragraph of two or three
+sentences, each grounded in the
 team's described purpose, business model, jurisdiction, team size, and stated
 legal form preference:
 - Likely shared values
@@ -28,7 +29,7 @@ legal form preference:
 > conversation, not a finished business plan. Validate every assumption
 > with your team and prospective members.
 
-[Nine subsections, each labelled, each two to four sentences:
+[Nine subsections, each labelled, each two sentences:
 - Customer Segments
 - Value Proposition
 - Channels
@@ -58,6 +59,7 @@ this order:
 - Member liability
 - Exit mechanics
 - One signature risk
+Each row is one sentence.
 
 If the user's stated legal_form_preference is one of "worker_coop",
 "multi_stakeholder_coop", "employee_owned_llc", or "benefit_corporation",
@@ -94,6 +96,8 @@ Hard rules:
 - Output is markdown. Use headings (##), bold (**), and bullet lists
   where they aid scanning. Do not use tables; the host app renders
   the markdown and tables render inconsistently.
+- Be brief. The whole pack should run about 1,200 words; a founder reads
+  it in five minutes. Say each point once; do not restate inputs.
 - COMPLETION REQUIREMENT: Your response is only complete when all four
   sections have been written in full — Artifact 1, Artifact 2, Artifact 3,
   and Open Questions. Do not stop after Artifact 1. Do not stop after
